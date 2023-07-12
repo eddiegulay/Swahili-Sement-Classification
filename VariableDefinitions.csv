@@ -1,0 +1,4 @@
+Variable Definitions,
+id,Unique identifier for each comment(train_id or test_id)
+comment,Full details about particular comment related to telecomunication companies or services in Tanzania from Twitter
+sentiment,"The specific category of a particular comment (negative,neutral or positive)"
