@@ -158,9 +158,10 @@ model.compile(
     metrics=['accuracy']
 )
 
+print(model.summary())
 
 history = model.fit(train_padded_sequences, train_one_hot_labels, validation_data=(test_padded_sequences, test_one_hot_labels), batch_size=4, epochs=10)
-
+print("✨✨🎉Training Complete \n")
 
 # Save the model
 best_model.save("model/hyper_sarufi_tunned_swahili_sentiment_rating.h5")
@@ -169,3 +170,5 @@ best_model.save("model/hyper_sarufi_tunned_swahili_sentiment_rating.h5")
 tokenizer_json = tokenizer.to_json()
 with open('tokenizers/hyper_sarufi_tunned_swahili_sentiment_rating.json', 'w', encoding='utf-8') as f:
     f.write(tokenizer_json)
+
+print("Model and tokenizer are saved as hyper_sarufi_tunned_swahili_sentiment_rating")

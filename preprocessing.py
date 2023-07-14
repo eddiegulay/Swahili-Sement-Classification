@@ -1,5 +1,6 @@
 import pandas  as pd
 import numpy as np
+import re
 
 path = 'assets/'
 train  = pd.read_csv(path + 'neural_tech_swahili_sentiment.csv')
@@ -7,13 +8,8 @@ train  = pd.read_csv(path + 'neural_tech_swahili_sentiment.csv')
 # Rename the columns in the DataFrame
 train.rename(columns={'id':'train_id', 'text': 'comment', 'labels': 'sentiment'}, inplace=True)
 
-# Remove duplicate rows
 train = train.drop_duplicates()
-
-# Remove rows with missing values
 train = train.dropna()
-
-import re
 
 def clean_text(text):
     # Remove special characters, punctuation, and non-Swahili characters
@@ -40,3 +36,4 @@ def clean_text(text):
 train['comment'] = train['comment'].apply(clean_text)
 
 train.to_csv(path + 'cleaned_training_set.csv', index=False)
+print(f"Cleaned dataset saved in cleaned_training_set. Load and use directly")
