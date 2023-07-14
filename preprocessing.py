@@ -4,8 +4,8 @@ import numpy as np
 path = 'assets/'
 train  = pd.read_csv(path + 'neural_tech_swahili_sentiment.csv')
 
-train['comment'] = train['text']
-train['sentiment'] = train['labels']
+# Rename the columns in the DataFrame
+train.rename(columns={'id':'train_id', 'text': 'comment', 'labels': 'sentiment'}, inplace=True)
 
 # Remove duplicate rows
 train = train.drop_duplicates()
@@ -38,7 +38,5 @@ def clean_text(text):
 
 # Apply text cleaning to the 'text' column
 train['comment'] = train['comment'].apply(clean_text)
-
-train.drop(['id', 'text', 'labels'], axis=1)
 
 train.to_csv(path + 'cleaned_training_set.csv', index=False)
